@@ -1,8 +1,8 @@
 package com.example.meditations.meditations
 
 import com.example.meditations.model.Meditation
-import io.reactivex.rxjava3.core.Flowable
-import io.reactivex.rxjava3.core.Observable
+import io.reactivex.Flowable
+import io.reactivex.Observable
 
 interface VM {
     //

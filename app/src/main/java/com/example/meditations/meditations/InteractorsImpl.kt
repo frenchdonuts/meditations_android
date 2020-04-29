@@ -1,7 +1,7 @@
 package com.example.meditations.meditations
 
 import com.example.meditations.model.Meditation
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Single
 
 class InteractorsImpl : Interactors {
     override fun fetchMeditations(): Single<List<Meditation>> {

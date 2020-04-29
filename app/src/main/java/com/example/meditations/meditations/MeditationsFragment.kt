@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.*
 import androidx.navigation.fragment.findNavController
-import autodispose2.androidx.lifecycle.autoDispose
 import com.example.meditations.R
 import com.example.meditations.ViewModelFactory
 import com.example.meditations.databinding.FragmentMeditationsBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import io.reactivex.rxjava3.core.Flowable
-import io.reactivex.rxjava3.core.Observable
+import com.uber.autodispose.android.lifecycle.autoDispose
+import io.reactivex.Flowable
+import io.reactivex.Observable
 
 /**
  * Fragment that displays the User's list of Meditations

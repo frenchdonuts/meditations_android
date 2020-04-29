@@ -2,12 +2,12 @@ package com.example.meditations.meditations
 
 import androidx.lifecycle.ViewModel
 import arrow.syntax.function.pipe
-import io.reactivex.rxjava3.core.BackpressureStrategy
-import io.reactivex.rxjava3.core.Flowable
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.functions.BiFunction
-import io.reactivex.rxjava3.subjects.BehaviorSubject
-import io.reactivex.rxjava3.subjects.PublishSubject
+import io.reactivex.BackpressureStrategy
+import io.reactivex.Flowable
+import io.reactivex.Observable
+import io.reactivex.functions.BiFunction
+import io.reactivex.subjects.BehaviorSubject
+import io.reactivex.subjects.PublishSubject
 
 class MeditationsViewModel(val interactors: Interactors) : ViewModel(), VM {
 
