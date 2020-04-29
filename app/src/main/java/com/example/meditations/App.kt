@@ -6,7 +6,8 @@ import com.squareup.sqldelight.android.AndroidSqliteDriver
 class App : Application() {
 
     companion object {
-        private lateinit var db: Database
+        lateinit var db: Database
+            private set
     }
     override fun onCreate() {
         super.onCreate()
