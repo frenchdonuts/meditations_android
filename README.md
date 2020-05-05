@@ -22,5 +22,5 @@ It also serves as a demonstration of my current understanding of Android archite
 * [ ] Implement reactive data flow for Meditations list screen (introduce RecyclerView DiffUtil)
 * [ ] Implement Add Meditations screen
 * [ ] Implement random notifications
-* [ ] Use Dagger to inject dependencies (e.g. Data Sources into Interactors and Interactors into VMs)
+* [ ] Use Dagger to inject dependencies
 * [ ] Break features into separate modules
