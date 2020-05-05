@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/AddMeditationFragment"
-        android:name="com.example.meditations.add_meditation.AddMeditationFragment"
+        android:name="com.example.meditations.add_meditation.ui.AddMeditationFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_add_meditation">
 
