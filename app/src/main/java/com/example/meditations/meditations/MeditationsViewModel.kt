@@ -1,40 +1,37 @@
 package com.example.meditations.meditations
 
-import androidx.lifecycle.ViewModel
 import arrow.syntax.function.pipe
-import io.reactivex.BackpressureStrategy
-import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
 
-class MeditationsViewModel(val interactors: Interactors) : ViewModel(), VM {
+class MeditationsViewModel(val interactors: Interactors) : VM() {
 
-    private fun toMsgs(events: Observable<UI.Event>): Observable<VM.Msg> = events.publish { shared ->
+    private fun toMsgs(events: Observable<UI.Event>): Observable<Msg> = events.publish { shared ->
         Observable.merge(listOf(
             shared.ofType(UI.Event.UiInitialized::class.java)
                 .switchMapSingle { interactors.fetchMeditations() }
-                .map { VM.Msg.MeditationsLoaded(it) },
+                .map { Msg.MeditationsLoaded(it) },
             shared.ofType(UI.Event.UiRecreated::class.java)
-                .map { VM.Msg.NoOp }
+                .map { Msg.NoOp }
         ))
     }
 
-    private fun computeStates(msgs: Observable<VM.Msg>): Observable<VM.VMState> = msgs.scan(VM.VMState(),
+    private fun computeStates(msgs: Observable<Msg>): Observable<State> = msgs.scan(State(),
         { state, msg ->
             when (msg) {
-                is VM.Msg.MeditationsLoaded -> {
+                is Msg.MeditationsLoaded -> {
                     val items = msg.meditations
                         .map { UI.Item(it.id, it.text) }
                     state.copy(uiState = state.uiState.copy(items = items))
                 }
-                is VM.Msg.NoOp -> state
+                is Msg.NoOp -> state
             }
         })
 
     private val eventsSubject: PublishSubject<UI.Event> = PublishSubject.create()
-    private val statesSubject: BehaviorSubject<UI.UIState> = BehaviorSubject.create()
+    private val statesSubject: BehaviorSubject<UI.State> = BehaviorSubject.create()
     private val uiInitializedFilter =
         BiFunction { _ : UI.Event, newEvent: UI.Event ->
         if (newEvent is UI.Event.UiInitialized) {
@@ -56,7 +53,7 @@ class MeditationsViewModel(val interactors: Interactors) : ViewModel(), VM {
         events.subscribe(eventsSubject)
     }
 
-    override fun states(): Flowable<UI.UIState> {
-        return statesSubject.toFlowable(BackpressureStrategy.LATEST)
+    override fun states(): Observable<UI.State> {
+        return statesSubject
     }
 }

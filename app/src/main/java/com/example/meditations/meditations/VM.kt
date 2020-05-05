@@ -1,10 +1,10 @@
 package com.example.meditations.meditations
 
+import androidx.lifecycle.ViewModel
+import com.example.meditations.base.VM
 import com.example.meditations.model.Meditation
-import io.reactivex.Flowable
-import io.reactivex.Observable
 
-interface VM {
+abstract class VM: VM<UI.Event, UI.State>, ViewModel() {
     //
     sealed class Msg {
         data class MeditationsLoaded(val meditations: List<Meditation>) : Msg()
@@ -12,9 +12,9 @@ interface VM {
     }
 
     //
-    data class VMState(val uiState: UI.UIState = UI.UIState(),
-                       val meditations: List<Meditation> = listOf())
+    data class State(
+        val uiState: UI.State = UI.State(),
+        val meditations: List<Meditation> = listOf()
+    )
 
-    fun processEvents(events: Observable<UI.Event>)
-    fun states(): Flowable<UI.UIState>
 }

@@ -11,7 +11,7 @@ import java.lang.IllegalArgumentException
 
 class ViewModelFactory private constructor(private val context: Context) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass == MeditationsViewModel::class.java)
+        if (modelClass == com.example.meditations.meditations.VM::class.java)
             return MeditationsViewModel(InteractorsImpl(MeditationRepositoryImpl(App.db))) as T
 
         throw IllegalArgumentException("unknown model class: $modelClass")

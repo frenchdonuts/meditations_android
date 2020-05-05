@@ -12,7 +12,6 @@ import com.example.meditations.ViewModelFactory
 import com.example.meditations.databinding.FragmentMeditationsBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.uber.autodispose.android.lifecycle.autoDispose
-import io.reactivex.Flowable
 import io.reactivex.Observable
 
 /**
@@ -20,9 +19,9 @@ import io.reactivex.Observable
  */
 class MeditationsFragment : Fragment(), UI {
 
-    private val viewModel: MeditationsViewModel by lazy(LazyThreadSafetyMode.NONE) {
+    private val viewModel: VM by lazy(LazyThreadSafetyMode.NONE) {
         ViewModelProvider(this, ViewModelFactory.instance(requireContext()))
-            .get(MeditationsViewModel::class.java)
+            .get(VM::class.java)
     }
     private val adapter: MeditationsAdapter = MeditationsAdapter()
 
@@ -33,7 +32,7 @@ class MeditationsFragment : Fragment(), UI {
             )
         )
 
-    override fun render(states: Flowable<UI.UIState>) {
+    override fun render(states: Observable<UI.State>) {
         states.map { it.items }
             .autoDispose(viewLifecycleOwner)
             .subscribe { meditations ->
