@@ -12,8 +12,8 @@ It also serves as a demonstration of my current understanding of Android archite
 *     processEvents :: Observable<UI.Event> -> Unit
 *     states :: Unit -> Observable<UI.UIState>
 * Dataflow:
-*     Data sources (db, network, etc.) -> Interactors --VM.Msg--> ViewModel:VM --UI.UIState--> Fragment:UI
-*     Fragment:UI --UI.Event--> ViewModel:VM -> Interactors -> Data sources (db, network, etc.)
+*     Data sources -> Repositories -> Interactors -> VM -> UI
+*     UI -> VM -> Interactors -> Repositories -> Data sources
 
 ## TODO
 
