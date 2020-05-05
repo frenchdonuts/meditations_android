@@ -6,12 +6,13 @@ import androidx.lifecycle.ViewModelProvider
 import arrow.syntax.function.memoize
 import com.example.meditations.meditations.InteractorsImpl
 import com.example.meditations.meditations.MeditationsViewModel
+import com.example.meditations.repository.MeditationRepositoryImpl
 import java.lang.IllegalArgumentException
 
 class ViewModelFactory private constructor(private val context: Context) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass == MeditationsViewModel::class.java)
-            return MeditationsViewModel(InteractorsImpl(App.db)) as T
+            return MeditationsViewModel(InteractorsImpl(MeditationRepositoryImpl(App.db))) as T
 
         throw IllegalArgumentException("unknown model class: $modelClass")
     }
