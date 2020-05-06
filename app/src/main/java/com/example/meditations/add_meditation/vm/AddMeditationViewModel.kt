@@ -6,10 +6,10 @@ import io.reactivex.Observable
 
 class AddMeditationViewModel(val interactors: Interactors) : VM() {
     override fun processEvents(events: Observable<UI.Event>) {
-        TODO("Not yet implemented")
+        //
     }
 
     override fun states(): Observable<UI.State> {
-        TODO("Not yet implemented")
+        return Observable.empty()
     }
 }
