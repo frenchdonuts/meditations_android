@@ -1,4 +1,4 @@
-# Meditations: Surprise yourself with your past thoughts
+# Meditations(WIP): Surprise yourself with your past thoughts
 
 This is an app I've been thinking about making for a while. Its purpose is to randomly notify the user of heuristics, tidbits of wisdom, etc.
 It also serves as a demonstration of my current understanding of Android architecture.
