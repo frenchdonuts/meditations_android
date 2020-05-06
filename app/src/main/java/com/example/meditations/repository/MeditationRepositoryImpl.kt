@@ -1,6 +1,5 @@
 package com.example.meditations.repository
 
-import android.util.Log
 import com.example.meditations.Database
 import com.example.meditations.model.Meditation
 import com.squareup.sqldelight.runtime.rx.asObservable
@@ -26,4 +25,7 @@ class MeditationRepositoryImpl(val db: Database): MeditationRepository {
         }
     }
 
+    companion object {
+        private val TAG = "MeditationRepoImpl"
+    }
 }
