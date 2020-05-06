@@ -19,7 +19,7 @@ It also serves as a demonstration of my current understanding of Android archite
 
 * [x] Integrate SQLDelight and create Meditations table + queries
 * [x] Implement end-to-end data flow for Meditations list screen (one time fetch)
-* [ ] Implement Add Meditations screen
+* [x] Implement Add Meditations screen
 * [ ] Implement reactive data flow for Meditations list screen (introduce RecyclerView DiffUtil)
 * [ ] Implement random notifications
 * [ ] Use Dagger to inject dependencies
