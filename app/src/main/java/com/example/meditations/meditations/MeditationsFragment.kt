@@ -35,8 +35,8 @@ class MeditationsFragment : Fragment(), UI {
     override fun render(states: Observable<UI.State>) {
         states.map { it.items }
             .autoDispose(viewLifecycleOwner)
-            .subscribe { meditations ->
-                adapter.meditationItems = meditations
+            .subscribe { meditationItems ->
+                adapter.meditationItems = meditationItems
             }
     }
 

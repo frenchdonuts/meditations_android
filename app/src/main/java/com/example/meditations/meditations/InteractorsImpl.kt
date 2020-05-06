@@ -9,7 +9,11 @@ class InteractorsImpl(val meditationRepo: MeditationRepository) : Interactors {
     override fun fetchMeditations(): Single<List<Meditation>> {
         return meditationRepo
             .all()
+            .take(1)
             .singleOrError()
     }
 
+    companion object {
+        private val TAG = "meditations:IntersImpl"
+    }
 }
