@@ -14,8 +14,7 @@ class AddMeditationViewModel(val interactors: Interactors) : VM() {
             shared.ofType(UI.Event.CreateButtonTapped::class.java)
                 .switchMapSingle {
                     interactors.createMeditation(it.meditationText)
-                }
-                .map { Msg.NoOp as Msg },
+                },
             shared.ofType(UI.Event.UIInitialized::class.java)
                 .map { Msg.NoOp }
         ))
