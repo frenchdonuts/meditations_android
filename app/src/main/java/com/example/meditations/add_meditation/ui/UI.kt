@@ -8,6 +8,6 @@ interface UI: com.example.meditations.base.UI<UI.Event, UI.State> {
     }
 
     //
-    sealed class State
+    data class State(val unit: Unit = Unit)
 
 }
