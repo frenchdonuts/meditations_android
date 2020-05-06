@@ -10,6 +10,7 @@ import com.example.meditations.ViewModelFactory
 import com.example.meditations.add_meditation.vm.VM
 import com.example.meditations.databinding.FragmentAddMeditationBinding
 import com.jakewharton.rxbinding2.view.clicks
+import com.uber.autodispose.android.lifecycle.autoDispose
 import io.reactivex.Observable
 
 class AddMeditationFragment : UI, Fragment() {
@@ -28,7 +29,9 @@ class AddMeditationFragment : UI, Fragment() {
     }
 
     override fun render(states: Observable<UI.State>) {
-        // Nothing to do
+        states
+            .autoDispose(viewLifecycleOwner)
+            .subscribe()
     }
 
     private lateinit var binding: FragmentAddMeditationBinding
