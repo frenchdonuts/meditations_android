@@ -1,8 +1,8 @@
 package com.example.meditations.meditations
 
 import com.example.meditations.model.Meditation
-import io.reactivex.Single
+import io.reactivex.Observable
 
 interface Interactors {
-    fun fetchMeditations(): Single<List<Meditation>>
+    fun meditations(): Observable<List<Meditation>>
 }

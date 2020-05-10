@@ -11,7 +11,7 @@ class MeditationsViewModel(val interactors: Interactors) : VM() {
     private fun toMsgs(events: Observable<UI.Event>): Observable<Msg> = events.publish { shared ->
         Observable.merge(listOf(
             shared.ofType(UI.Event.UiInitialized::class.java)
-                .switchMapSingle { interactors.fetchMeditations() }
+                .switchMap { interactors.meditations() }
                 .map { Msg.MeditationsLoaded(it) },
             shared.ofType(UI.Event.UiRecreated::class.java)
                 .map { Msg.NoOp }
