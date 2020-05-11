@@ -18,7 +18,9 @@ class AddMeditationViewModel(val interactors: Interactors) : VM() {
             shared.ofType(UI.Event.UIInitialized::class.java)
                 .map { Msg.NoOp }
         ))
-    }.observeOn(AndroidSchedulers.mainThread())
+    }
+    .filter { it !is Msg.NoOp }
+    .observeOn(AndroidSchedulers.mainThread())
 
     private fun computeState(msgs: Observable<Msg>): Observable<State> = msgs.scan(State(),
         { state, msg ->

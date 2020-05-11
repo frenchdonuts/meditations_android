@@ -2,6 +2,7 @@ package com.example.meditations.meditations
 
 import arrow.syntax.function.pipe
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
@@ -16,6 +17,8 @@ class MeditationsViewModel(val interactors: Interactors) : VM() {
                 .map { Msg.NoOp }
         ))
     }
+    .filter { it !is Msg.NoOp }
+    .observeOn(AndroidSchedulers.mainThread())
 
     private fun computeStates(msgs: Observable<Msg>): Observable<State> = msgs.scan(State(),
         { state, msg ->
