@@ -10,4 +10,7 @@ class MeditationItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
     val meditationText: TextView get() = binding.meditationText
     private val binding: MeditationItemBinding = MeditationItemBinding.bind(itemView)
 
+    fun bind(item: UI.Item) {
+        meditationText.text = item.quote
+    }
 }

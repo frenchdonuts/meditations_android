@@ -36,7 +36,7 @@ class MeditationsFragment : Fragment(), UI {
         states.map { it.items }
             .autoDispose(viewLifecycleOwner)
             .subscribe { meditationItems ->
-                adapter.meditationItems = meditationItems
+                adapter.submitList(meditationItems)
             }
     }
 

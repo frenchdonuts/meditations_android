@@ -2,23 +2,14 @@ package com.example.meditations.meditations
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import com.example.meditations.R
 
-class MeditationsAdapter : RecyclerView.Adapter<MeditationItemViewHolder>() {
-
-    var meditationItems: List<UI.Item> = listOf()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
-
-    override fun getItemCount(): Int {
-        return meditationItems.size
-    }
+class MeditationsAdapter : ListAdapter<UI.Item, MeditationItemViewHolder>(DiffCallback) {
 
     override fun onBindViewHolder(holder: MeditationItemViewHolder, position: Int) {
-        holder.meditationText.text = meditationItems[position].quote
+        holder.bind(getItem(position))
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MeditationItemViewHolder {
@@ -27,4 +18,16 @@ class MeditationsAdapter : RecyclerView.Adapter<MeditationItemViewHolder>() {
         return MeditationItemViewHolder(view)
     }
 
+    companion object {
+        val DiffCallback = object : DiffUtil.ItemCallback<UI.Item>() {
+            override fun areItemsTheSame(oldItem: UI.Item, newItem: UI.Item): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: UI.Item, newItem: UI.Item): Boolean {
+                return oldItem == newItem
+            }
+
+        }
+    }
 }
