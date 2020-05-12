@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/MeditationsFragment"
-        android:name="com.example.meditations.meditations.MeditationsFragment"
+        android:name="io.onedonut.backburner.meditations.MeditationsFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_meditations">
 
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/AddMeditationFragment"
-        android:name="com.example.meditations.add_meditation.ui.AddMeditationFragment"
+        android:name="io.onedonut.backburner.add_meditation.ui.AddMeditationFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_add_meditation">
 
