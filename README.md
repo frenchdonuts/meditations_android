@@ -25,3 +25,4 @@ It also serves as a demonstration of my current understanding of Android archite
 * [ ] Use Dagger to inject dependencies
 * [ ] Refine UX and UI
 * [ ] Break features into separate modules
+* [ ] Rename app, packages, etc. to backburner
